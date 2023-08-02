@@ -26,7 +26,8 @@ class Minion():
             pass
 
         elif job_opportunity == "n" or "no" or "No":
-            pass
+            print("your salary has been added by 10k!")
+            self.salary += 10
 
         else:
             print("Sorry, but that is an invalid answer")

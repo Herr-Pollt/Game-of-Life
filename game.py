@@ -1,7 +1,9 @@
 class Game():
+    
     def __init__(self) -> None:
         self.round = 0
         self.players = []
+
     def gather_players(self):
         player_amount= input("How many players would like to play?")
         if player_amount <= 1:
