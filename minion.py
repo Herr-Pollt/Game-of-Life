@@ -6,6 +6,7 @@ class Minion():
         self.salary = 0
         self.balance = 0
         self.hunger = 10
+        self.job = []
 
 
     def work(self):
@@ -49,6 +50,7 @@ class Minion():
                   you felt like your really have done a lot of things, 
                   so your hunger gets depleted by 6""")
             self.hunger -= 6
+
         hunger_check = input("Do you want to check your hunger?(y/n)")
 
         if hunger_check == "y" or "yes" or "Yes":
