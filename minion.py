@@ -6,7 +6,7 @@ class Minion():
         self.salary = 0
         self.balance = 0
         self.hunger = 10
-        self.job = []
+        self.job = "thief"
 
 
     def work(self):
@@ -23,7 +23,7 @@ class Minion():
                    a job opportunity. Do You take the job opportuniy(y/n)?""")
             
         if job_opportunity == "y" or "yes" or "Yes":
-            #Make jobs and put them here
+            self.job = self.jobs[random.randint(0, len(self.jobs))]
             pass
 
         elif job_opportunity == "n" or "no" or "No":
@@ -32,8 +32,7 @@ class Minion():
 
         else:
             print("Sorry, but that is an invalid answer")
-
-
+            
     def eating(self):
         work_efficiency = random.randint(1, 3)
         if work_efficiency == 1:
