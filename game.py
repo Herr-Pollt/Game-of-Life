@@ -1,55 +1,35 @@
+import art
+from minion import Minion
 import random
 
-class Minion():
-    def __init__(self, name):
-        self.name = name
-        self.salary = 0
-        self.balance = 0
-        self.hunger = 10
-        self.job = "thief"
+
+class Game():
+    
+    def __init__(self) -> None:
+        self.game_continue = True
+        self.round = 0
+        self.players = []
         self.jobs = ["firefighter", "farmer", "professor", "gamer", "thief"]
 
-    def work(self):
-        boss_notice = random.randint(1, 3)
-        self.balance += self.salary
+    def pick_job(self):
+        chosen_jobs = random.sample(self.jobs, 2)
+        job = int(input(f"""Your two choices of jobs are {chosen_jobs[0]} and {chosen_jobs[1]},
+                     Press 1 for the first job, press 2 for the second job"""))
+        job = chosen_jobs[job - 1]
+        
+        return job
 
-        print(f"You are working very hard and have gained {self.salary} dollars."
-              f"That would mean that you have {self.balance} dollars.")
-
-        if boss_notice == 3:
-            job_opportunity = input("Your boss notices that you have been working extra hard and you have done "
-                                    "a great job. He offers you a promotion of 10k, but another company offers you "
-                                    "a job opportunity. Do you take the job opportunity (y/n)?")
-
-            if job_opportunity.lower() in ["y", "yes"]:
-                self.job = random.choice(self.jobs)
-
-            elif job_opportunity.lower() in ["n", "no"]:
-                print("Your salary has been added by 10k!")
-                self.salary += 10
-
-            else:
-                print("Sorry, but that is an invalid answer")
-
-    def eating(self):
-        work_efficiency = random.randint(1, 3)
-        if work_efficiency == 1:
-            print("You have been pretty lazy at work so your hunger got depleted by two")
-            self.hunger -= 2
-
-        elif work_efficiency == 2:
-            print("The boss knows that you have done all your requirements "
-                  "and have been working very hard, so your hunger got depleted by 4")
-            self.hunger -= 4
-
-        elif work_efficiency == 3:
-            print("You have been an extremely good worker today and "
-                  "you felt like your really have done a lot of things, "
-                  "so your hunger gets depleted by 6")
-            self.hunger -= 6
-
-        hunger_check = input("Do you want to check your hunger? (y/n)")
-
-        if hunger_check.lower() in ["y", "yes"]:
-            print(f"Your hunger is {self.hunger}")
-
+    def gather_players(self):
+        player_amount= int(input("How many players would like to play?"))
+        if player_amount <= 1:
+            print("Invalid! That is too less")
+        if player_amount >= 5:
+            print("Invalid! That is too many players")
+        for i in range(player_amount):
+            name = input("Please enter a name for the charecter")
+            minion = Minion(name)
+            self.players.append(minion)
+            
+    
+    def draw(self):
+        art.tprint("Welcome to Minions'Life", "doom",True,  "chess1")

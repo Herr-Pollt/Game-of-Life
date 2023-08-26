@@ -1,6 +1,7 @@
 from game import Game
 from minion import Minion
 
+
 def main():
     game = Game()
     for i in range(len(game.players)):
@@ -14,11 +15,17 @@ def main():
         for player in game.players:
             job = game.pick_job()
             player.job = job
-
         while game.round < 10:
             for player in game.players:
-                player.work()
-                player.eating()
+                choice = player.choice()
+                if choice == "Rest":
+                    pass
+                elif choice == "Eat":
+                    pass
+                elif choice == "Work":
+                    player.work()
+                    player.hungry()
+                print("---------------------------------------------")
             game.round += 1
 
         print("Game over")
