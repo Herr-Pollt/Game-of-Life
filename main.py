@@ -1,7 +1,6 @@
 from game import Game
 from minion import Minion
 
-
 def main():
     game = Game()
     for i in range(len(game.players)):
