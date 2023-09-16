@@ -1,24 +1,28 @@
-class Firefighter():
-    def __init__(self):
-        self.salary = 20
-        self.name = "firefighter"
+from abc import ABC
 
-class Farmer():
-    def __init__(self):
-        self.salary = 50
-        self.name = "farmer"
+class Job(ABC):
+    def __init__(self, salary, name):
+        super().__init__()
+        self.salary = salary
+        self.name = name
 
-class Professor():
+class Firefighter(Job):
     def __init__(self):
-        self.salary = 40
-        self.name = "professor"
+        super().__init__(20, "firefighter")
 
-class Gamer():
-    def __init__(self):
-        self.salary = 30
-        self.name = "gamer"
 
-class Thief():
+class Farmer(Job):
     def __init__(self):
-        self.salary = 5
-        self.name = "thief"
+        super().__init__(50, "farmer")
+
+class Professor(Job):
+    def __init__(self):
+        super().__init__(40, "professor")
+
+class Gamer(Job):
+    def __init__(self):
+        super().__init__(30, "gamer")
+
+class Thief(Job):
+    def __init__(self):
+        super().__init__(5, "thief")

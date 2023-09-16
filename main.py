@@ -22,6 +22,7 @@ def main():
                 elif choice == "Eat":
                     pass
                 elif choice == "Work":
+                    player.job_check()
                     player.work()
                     player.hungry()
                 print("---------------------------------------------")

@@ -2,7 +2,6 @@ import random
 import cutie
 import jobs
 
-
 class Minion():
     def __init__(self, name):
         self.name = name
@@ -12,20 +11,20 @@ class Minion():
         self.salary = 0
     
     def job_check(self):
-        if jobs.Firefighter.name == self.job:
-            self.salary = jobs.Firefighter.salary
+        if isinstance(self.job, jobs.Firefighter):
+            self.salary = jobs.Firefighter().salary
 
-        if jobs.Farmer.name == self.job:
-            self.salary = jobs.Farmer.salary
+        if jobs.Farmer().name == self.job:
+            self.salary = jobs.Farmer().salary
 
-        if jobs.Gamer.name == self.job:
-            self.salary = jobs.Gamer.salary
+        if jobs.Gamer().name == self.job:
+            self.salary = jobs.Gamer().salary
 
-        if jobs.Professor.name == self.job:
-            self.salary = jobs.Professor.salary
+        if jobs.Professor().name == self.job:
+            self.salary = jobs.Professor().salary
 
         else:
-            self.salary = jobs.Thief.salary
+            self.salary = jobs.Thief().salary
 
     def work(self):
         boss_notice = random.randint(1, 3)
