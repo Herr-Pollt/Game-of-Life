@@ -20,7 +20,7 @@ def main():
                 if choice == "Rest":
                     pass
                 elif choice == "Eat":
-                    pass
+                    player.eat()
                 elif choice == "Work":
                     player.job_check()
                     player.work()
