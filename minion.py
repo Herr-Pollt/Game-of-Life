@@ -95,46 +95,43 @@ class Minion():
         return choice
     
     def eat(self):
-        Continue = True
-        if Continue:
-            food = []
-            price = 0
-            print("""Here is the menu
-    ----------------------------------------------------------------------------""")
-            if cutie.prompt_yes_or_no(f"Do you want an appetizer today, {self.name}?"):
-                # List of names to select from, including some captions
-                appetizer = [
-                    "Caesar Salad $3",
-                    "Fruit Salad $4",
-                    "Chedder Soup $3",
-                    "Seafood Soup $5",
-                ]
+        food = []
+        price = 0
+        print("""Here is the menu
+----------------------------------------------------------------------------""")
+        if cutie.prompt_yes_or_no(f"Do you want an appetizer today, {self.name}?"):
+            # List of names to select from, including some captions
+            appetizer = [
+                "Caesar Salad $3",
+                "Fruit Salad $4",
+                "Chedder Soup $3",
+                "Seafood Soup $5",
+            ]
 
-                appetizer_choice = appetizer[cutie.select(appetizer)]
+            appetizer_choice = appetizer[cutie.select(appetizer)]
 
-                if appetizer_choice == "Caesar Salad $3":
-                    price += 3
-                elif appetizer_choice == "Fruit Salad $4":
-                    price += 4
-                elif appetizer_choice == "Chedder Salad $3":
-                    price += 3
-                elif appetizer_choice == "Seafood Salad $5":
-                    price += 5
-                
+            if appetizer_choice == "Caesar Salad $3":
+                price += 3
+            elif appetizer_choice == "Fruit Salad $4":
+                price += 4
+            elif appetizer_choice == "Chedder Salad $3":
+                price += 3
+            elif appetizer_choice == "Seafood Salad $5":
+                price += 5
+            
 
-                if self.balance < price:
-                    print("you have been kicked out the restaurant for being too poor")
-                    Continue = False
-
-                # Get the appetizer
-                food += appetizer_choice[cutie.select(appetizer_choice)]
-                
+            if self.balance < price:
+                print("You have been denied for being too poor")
             else:
-                pass
-            print(f"{self.name}, you chose {appetizer}")
+                food += appetizer_choice
+                print(f"{self.name}, you chose {appetizer}")
+        else:
+            appetizer = "nothing"
+        
 
+        if cutie.prompt_yes_or_no(f"Do you want a main course today, {self.name}?"):
             main_course = [
-                "Bob $1"
+                "Bob $1",
                 "Buffalo Wings $3",
                 "Spaghetti $5",
                 "Steak $10",
@@ -157,41 +154,38 @@ class Minion():
             food += main_course_choice
 
             if self.balance < price:
-                    print("you have been kicked out the restaurant for being too poor")
-                    Continue = False
-            print(f"{self.name}, you chose {main_course}")
-
-            if cutie.prompt_yes_or_no(f"Do you want dessert today, {self.name}?"):
-                # List of names to select from, including some captions
-                dessert = [
-                    "Ice Cream $2",
-                    "Creme Brulee $4",
-                    "Choclate Cake $4",
-                    "Sticky Toffee Pudding $6",
-                ]
-                
-                dessert_choice = dessert[cutie.select(dessert)]
-
-                if dessert_choice == "Ice Cream $2":
-                    price += 2
-                elif dessert_choice == "Creme Brulee $4":
-                    price += 4
-                elif dessert_choice == "Choclate Cake $4":
-                    price += 4
-                elif dessert_choice == "Sticky Toffee Pudding $6":
-                    price += 6
-
-                if self.balance < price:
-                    print("you have been kicked out the restaurant for being too poor")
-                    Continue = False
-
-                # Get the dessert
-                food += dessert_choice
-
-                self.balance -= price
-
+                    print("You have been denied for being too poor")
             else:
-                pass
-            print(f"{self.name}, you chose {dessert}")
+                food += main_course_choice
+                print(f"{self.name}, you chose {main_course}")
         else:
-            pass
+            main_course = "nothing"
+
+        if cutie.prompt_yes_or_no(f"Do you want dessert today, {self.name}?"):
+            # List of names to select from, including some captions
+            dessert = [
+                "Ice Cream $2",
+                "Creme Brulee $4",
+                "Choclate Cake $4",
+                "Sticky Toffee Pudding $6",
+            ]
+            
+            dessert_choice = dessert
+
+            if dessert_choice == "Ice Cream $2":
+                price += 2
+            elif dessert_choice == "Creme Brulee $4":
+                price += 4
+            elif dessert_choice == "Choclate Cake $4":
+                price += 4
+            elif dessert_choice == "Sticky Toffee Pudding $6":
+                price += 6
+
+            if self.balance < price:
+                print("You have been denied for being too poor")
+            else:
+                food += dessert_choice
+                print(f"{self.name}, you chose {dessert}")
+        else:
+            dessert = "nothing"
+        self.balance -= price

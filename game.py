@@ -22,8 +22,9 @@ class Game():
         player_amount= int(input("How many players would like to play?"))
         if player_amount <= 1:
             print("Invalid! That is too less")
-        if player_amount >= 5:
+        elif player_amount >= 5:
             print("Invalid! That is too many players")
+        
         for i in range(player_amount):
             name = input("Please enter a name for the charecter")
             minion = Minion(name)
